@@ -2,3 +2,5 @@
 /build/
 /build.noindex/
 xcuserdata/
+/electron/node_modules/
+/electron/dist/

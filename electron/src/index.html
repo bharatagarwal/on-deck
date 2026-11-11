@@ -1,0 +1,62 @@
+<!doctype html>
+<html
+  lang="en"
+  rt-liquid-glass="false"
+  rt-liquid-glass-scale="40"
+  rt-liquid-glass-blur="1"
+  rt-liquid-glass-edge-thickness="0.2"
+  rt-liquid-glass-transition-ms="0"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    />
+    <title>On Deck</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div id="app">
+      <div class="titlebar">
+        <span class="status" id="status" aria-live="polite"></span>
+        <div class="caption-buttons">
+          <button class="caption" id="style" tabindex="-1" title="Style" aria-label="Style"></button>
+          <button class="caption" id="minimize" tabindex="-1" title="Minimize" aria-label="Minimize"></button>
+          <button class="caption close" id="close" tabindex="-1" title="Close" aria-label="Close"></button>
+        </div>
+      </div>
+      <main id="content"></main>
+    </div>
+
+    <dialog id="delete-dialog" aria-labelledby="delete-title">
+      <h2 id="delete-title">Delete Task?</h2>
+      <p id="delete-message"></p>
+      <div class="dialog-buttons">
+        <button class="btn" id="delete-cancel" autofocus>Cancel</button>
+        <button class="btn destructive" id="delete-confirm">Delete</button>
+      </div>
+    </dialog>
+
+    <dialog id="error-dialog" aria-labelledby="error-title">
+      <h2 id="error-title">Couldn’t Save Tasks</h2>
+      <p id="error-message"></p>
+      <div class="dialog-buttons">
+        <button class="btn primary" id="error-ok" autofocus>OK</button>
+      </div>
+    </dialog>
+
+    <dialog id="shortcuts-dialog" aria-labelledby="shortcuts-title">
+      <h2 id="shortcuts-title">Keyboard Shortcuts</h2>
+      <div class="shortcut-grid" id="shortcut-grid"></div>
+      <div class="dialog-buttons">
+        <button class="btn primary" id="shortcuts-done" autofocus>Done</button>
+      </div>
+    </dialog>
+
+    <!-- Liquid Glass refraction: https://github.com/Rethink-JS/rt-liquid-glass (MIT). -->
+    <script src="../node_modules/@rethink-js/rt-liquid-glass/dist/index.min.js"></script>
+    <script src="renderer.js"></script>
+  </body>
+</html>
