@@ -1,0 +1,4 @@
+included:
+  - Iterate
+  - IterateUITests
+strict: true

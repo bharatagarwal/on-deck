@@ -1,0 +1,48 @@
+name: Iterate
+options:
+  minimumXcodeGenVersion: 2.46.0
+  deploymentTarget:
+    macOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "-"
+    GENERATE_INFOPLIST_FILE: YES
+targets:
+  Iterate:
+    type: application
+    platform: macOS
+    sources: [Iterate]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.iterate.tasks
+        PRODUCT_NAME: "On Deck"
+        INFOPLIST_KEY_CFBundleDisplayName: "On Deck"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "2"
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: local.iterate.tasks.debug
+  IterateUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources: [IterateUITests]
+    dependencies:
+      - target: Iterate
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.iterate.tasks.uitests
+schemes:
+  Iterate:
+    build:
+      targets:
+        Iterate: all
+        IterateUITests: [test]
+    test:
+      targets:
+        - name: IterateUITests
+          parallelizable: false
